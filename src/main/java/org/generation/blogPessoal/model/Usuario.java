@@ -30,6 +30,10 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String nome;
 
+	@NotNull
+	@Size(min = 5, max = 100)
+	private String foto;
+	
 	@ApiModelProperty(example = "email@email.com.br")
 	@NotNull(message = "O atributo Usuário é Obrigatório!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
@@ -39,8 +43,6 @@ public class Usuario {
 	@NotNull
 	@Size(min = 5)
 	private String senha;
-	
-	private String foto;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "criador" })
@@ -94,4 +96,5 @@ public class Usuario {
 		this.minhasPostagens = minhasPostagens;
 	}
 
+	
 }
