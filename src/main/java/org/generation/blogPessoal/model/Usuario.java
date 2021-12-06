@@ -30,10 +30,6 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String nome;
 
-	@NotNull
-	@Size(min = 5, max = 100)
-	private String foto;
-	
 	@ApiModelProperty(example = "email@email.com.br")
 	@NotNull(message = "O atributo Usuário é Obrigatório!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
@@ -43,6 +39,10 @@ public class Usuario {
 	@NotNull
 	@Size(min = 5)
 	private String senha;
+
+	private String foto;
+
+	private String tipo;
 
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "criador" })
@@ -79,13 +79,21 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public String getFoto() {
 		return foto;
 	}
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public List<Postagem> getMinhasPostagens() {
@@ -96,5 +104,4 @@ public class Usuario {
 		this.minhasPostagens = minhasPostagens;
 	}
 
-	
 }
